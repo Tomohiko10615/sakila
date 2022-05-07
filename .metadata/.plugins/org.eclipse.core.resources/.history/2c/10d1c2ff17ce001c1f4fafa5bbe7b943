@@ -1,0 +1,68 @@
+package com.tracen.dvdrental.entity;
+
+import java.time.Year;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Film {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long filmId;
+	
+	@NotEmpty
+	private String title;
+	private String description;
+	private Year releaseYear;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "language_id")
+	private Language language;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "language_id")
+	private Language originalLanguage;
+	
+	private Integer rentalDuration;
+	private Float rentalRate;
+	private Integer length;
+	private Float replacementCost;
+	private Enum<Ratings> rating;
+	private Set<String> specialFeatures;
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(
+			name = "film_actor",
+			joinColumns = {@JoinColumn(name = "film_id")},
+			inverseJoinColumns = {@JoinColumn(name = "actor_id")})
+	private Set<Actor> actors;
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(
+			name = "film_category",
+			joinColumns = {@JoinColumn(name = "film_id")},
+			inverseJoinColumns = {@JoinColumn(name = "category_id")})
+	private Set<Category> categories;
+	
+}

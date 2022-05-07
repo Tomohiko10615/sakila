@@ -1,0 +1,25 @@
+package com.tracen.dvdrental.entity;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Actor {
+
+	private Long actorId;
+	private String firstName;
+	private String lastName;
+	private Timestamp lastUpdateTimestamp;
+	
+	
+}

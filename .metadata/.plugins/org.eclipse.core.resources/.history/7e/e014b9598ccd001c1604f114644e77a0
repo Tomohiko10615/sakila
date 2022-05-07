@@ -1,0 +1,47 @@
+package com.tracen.dvdrental.entity;
+
+import java.time.Year;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Film {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long filmId;
+	private String title;
+	private String description;
+	private Year releaseYear;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "language_id")
+	private Language language;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "language_id")
+	private Language originalLanguage;
+	
+	private Integer rentalDuration;
+	private Float rentalRate;
+	private Integer length;
+	private Float replacementCost;
+	private Enum<ratings> rating;
+	
+}

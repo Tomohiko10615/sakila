@@ -1,0 +1,46 @@
+package com.tracen.dvdrental.entity;
+
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Payment {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long paymentId;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "staff_id")
+	private Staff staff;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private Rental rental;
+	
+	private Float amount;
+	
+	private Date paymentDate;
+	
+	
+}

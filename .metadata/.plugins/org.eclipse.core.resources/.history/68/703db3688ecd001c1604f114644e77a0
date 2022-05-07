@@ -1,0 +1,49 @@
+package com.tracen.dvdrental.entity;
+
+import java.sql.Timestamp;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class Address {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long addressId;
+	
+	@NotEmpty
+	private String address;
+	
+	@NotEmpty
+	private String address2;
+	
+	@NotEmpty
+	private String district;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private City city;
+	
+	@NotEmpty
+	private String postalCode;
+	
+	@NotEmpty
+	private String phone;
+	private Timestamp lastUpdate;
+	
+}

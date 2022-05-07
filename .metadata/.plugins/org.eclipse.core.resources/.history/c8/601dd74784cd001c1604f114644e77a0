@@ -1,0 +1,5 @@
+package com.tracen.dvdrental.entity;
+
+public class Category {
+
+}
