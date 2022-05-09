@@ -11,16 +11,12 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Getter
+@Setter
 public class Language {
 
 	@Id

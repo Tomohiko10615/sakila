@@ -1,0 +1,14 @@
+package com.tracen.dvdrental.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tracen.dvdrental.repository.CityRepository;
+
+@Service
+public class CityService {
+
+	@Autowired
+	private CityRepository cityRepository;
+	
+}

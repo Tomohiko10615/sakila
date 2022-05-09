@@ -4,39 +4,35 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Getter
+@Setter
 public class Store {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long storeId;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinTable(name = "staff_id")
-	private Staff managerStaff;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_staff")
+	private Staff staff;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinTable(name = "address_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_address")
 	private Address address;
 	
 	@Temporal(TemporalType.TIMESTAMP)

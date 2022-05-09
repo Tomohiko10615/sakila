@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,24 +15,20 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Getter
+@Setter
 public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long customerId;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinColumn(name = "store_id")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fk_store")
 	private Store store;
 	
 	@NotEmpty
@@ -45,10 +40,15 @@ public class Customer {
 	@NotEmpty
 	private String email;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinColumn(name = "address_id")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fk_address")
 	private Address address;
+	
 	private Boolean active;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createDate;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

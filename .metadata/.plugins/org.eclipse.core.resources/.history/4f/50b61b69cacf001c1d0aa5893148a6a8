@@ -1,0 +1,5 @@
+package com.tracen.dvdrental.repository;
+
+public interface StaffRepository {
+
+}

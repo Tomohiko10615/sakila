@@ -1,6 +1,7 @@
 package com.tracen.dvdrental.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,16 +15,14 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Getter
+@Setter
 public class Actor {
 
 	@Id
@@ -36,11 +35,16 @@ public class Actor {
 	@NotEmpty
 	private String lastName;
 	
+	@JsonBackReference
 	@ManyToMany(mappedBy = "actors")
 	private Set<Film> films;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date lastUpdate;
+	
+	public Actor() {
+		films = new HashSet<Film>();
+	}
 	
 }

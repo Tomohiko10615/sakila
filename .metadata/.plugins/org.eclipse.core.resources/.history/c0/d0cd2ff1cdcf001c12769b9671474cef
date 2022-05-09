@@ -1,0 +1,13 @@
+package com.tracen.dvdrental.service;
+
+import org.springframework.stereotype.Service;
+
+import com.tracen.dvdrental.repository.ActorRepository;
+
+@Service
+public class ActorService {
+
+	private ActorRepository actorRepository;
+	
+	
+}

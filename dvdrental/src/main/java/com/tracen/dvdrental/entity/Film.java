@@ -1,13 +1,11 @@
 package com.tracen.dvdrental.entity;
 
-import java.time.Year;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,60 +19,71 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
+@Getter
+@Setter
 public class Film {
+
+	/*public enum Rating {
+		G("G"), PG("PG"), PG13("PG13"), R("R"), NC17("NC17");
+
+		private final String rating;
+
+		private Rating(final String r) {
+			this.rating = r;
+		}
+
+		public String getRating() {
+			return rating;
+		}
+
+	}*/
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long filmId;
-	
+
 	@NotEmpty
 	private String title;
 	private String description;
-	private Year releaseYear;
-	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinColumn(name = "language_id")
+	private Integer releaseYear;
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fk_language")
 	private Language language;
-	
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@JoinColumn(name = "language_id", insertable = false, updatable = false)
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "fk_original_language")
 	private Language originalLanguage;
-	
+
 	private Integer rentalDuration;
 	private Float rentalRate;
 	private Integer length;
 	private Float replacementCost;
-	private Enum<Ratings> rating;
-	
-	@ElementCollection
-	private Set<String> specialFeatures;
-	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(
-			name = "film_actor",
-			joinColumns = {@JoinColumn(name = "film_id")},
-			inverseJoinColumns = {@JoinColumn(name = "actor_id")})
+	private String rating;
+
+	private String specialFeatures;
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "film_actor", joinColumns = { @JoinColumn(name = "film_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "actor_id") })
 	private Set<Actor> actors;
-	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinTable(
-			name = "film_category",
-			joinColumns = {@JoinColumn(name = "film_id")},
-			inverseJoinColumns = {@JoinColumn(name = "category_id")})
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "film_category", joinColumns = { @JoinColumn(name = "film_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "category_id") })
 	private Set<Category> categories;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date lastUpdate;
 	
+	public Film() {
+		actors = new HashSet<Actor>();
+		categories = new HashSet<Category>();
+	}
+
 }

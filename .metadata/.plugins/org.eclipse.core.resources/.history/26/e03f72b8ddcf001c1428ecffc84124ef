@@ -1,0 +1,101 @@
+package com.tracen.dvdrental.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Entity
+@Data
+@AllArgsConstructor
+public class Film implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	/*public enum Rating {
+		G("G"), PG("PG"), PG13("PG13"), R("R"), NC17("NC17");
+
+		private final String rating;
+
+		private Rating(final String r) {
+			this.rating = r;
+		}
+
+		public String getRating() {
+			return rating;
+		}
+
+	}*/
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long filmId;
+
+	@NotEmpty
+	private String title;
+	private String description;
+	private Integer releaseYear;
+
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_language")
+	private Language language;
+
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_original_language")
+	private Language originalLanguage;
+
+	private Integer rentalDuration;
+	private Float rentalRate;
+	private Integer length;
+	private Float replacementCost;
+	private String rating;
+
+	private String specialFeatures;
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "film_actor", joinColumns = { @JoinColumn(name = "film_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "actor_id") })
+	private Set<Actor> actors;
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "film_category", joinColumns = { @JoinColumn(name = "film_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "category_id") })
+	private Set<Category> categories;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date lastUpdate;
+	
+	public Film() {
+		actors = new HashSet<Actor>();
+		categories = new HashSet<Category>();
+	}
+
+}
