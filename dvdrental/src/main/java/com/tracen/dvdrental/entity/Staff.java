@@ -26,7 +26,7 @@ public class Staff {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long staffId;
+	private Long storeId;
 	
 	@NotEmpty
 	private String firstName;

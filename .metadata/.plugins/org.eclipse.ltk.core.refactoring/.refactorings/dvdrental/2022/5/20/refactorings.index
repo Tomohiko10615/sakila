@@ -2,3 +2,7 @@
 1652112553412	Encapsulate field 'rating'
 1652126552898	Encapsulate field 'rating'
 1652129611040	Delete element
+1652188752582	Move compilation units
+1652193708928	Rename type 'CustomerRepository'
+1652201519952	Move compilation unit
+1652201650657	Rename type 'RestController'

@@ -1,0 +1,28 @@
+package com.tracen.dvdpayment.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tracen.dvdpayment.entity.payment;
+import com.tracen.dvdpayment.repository.paymentRepository;
+
+@Service
+public class paymentService {
+
+	@Autowired
+	private paymentRepository paymentRepository;
+
+	public payment savepayment(payment payment) {
+		return paymentRepository.save(payment);
+	}
+
+	public payment getpayment(Long paymentId) {
+		return paymentRepository.findById(paymentId).orElse(null);
+	}
+
+	public List<payment> getAllpayments() {
+		return paymentRepository.findAll();
+	}
+}

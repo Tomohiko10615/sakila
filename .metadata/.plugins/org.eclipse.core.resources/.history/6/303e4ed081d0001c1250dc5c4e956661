@@ -1,0 +1,5 @@
+package com.tracen.dvdrental.controller;
+
+public class RestController {
+
+}

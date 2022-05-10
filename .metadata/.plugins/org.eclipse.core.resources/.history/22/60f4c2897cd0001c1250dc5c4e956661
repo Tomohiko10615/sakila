@@ -1,0 +1,28 @@
+package com.tracen.dvdrental.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tracen.dvdrental.entity.rental;
+import com.tracen.dvdrental.repository.rentalRepository;
+
+@Service
+public class rentalService {
+
+	@Autowired
+	private rentalRepository rentalRepository;
+
+	public rental saverental(rental rental) {
+		return rentalRepository.save(rental);
+	}
+
+	public rental getrental(Long rentalId) {
+		return rentalRepository.findById(rentalId).orElse(null);
+	}
+
+	public List<rental> getAllrentals() {
+		return rentalRepository.findAll();
+	}
+}

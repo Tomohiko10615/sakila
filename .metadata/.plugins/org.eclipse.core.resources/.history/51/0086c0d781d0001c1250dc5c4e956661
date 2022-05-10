@@ -1,0 +1,8 @@
+package com.tracen.dvdrental.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@DvdRentalRestController
+public class DvdRentalRestController {
+
+}

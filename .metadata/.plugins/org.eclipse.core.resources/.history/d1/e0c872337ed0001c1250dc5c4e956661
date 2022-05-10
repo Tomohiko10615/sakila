@@ -1,0 +1,19 @@
+package com.tracen.dvdrental.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.tracen.dvdrental.entity.Staff;
+import com.tracen.dvdrental.repository.StaffRepository;
+
+@Service
+public class StaffService {
+	
+	@Autowired
+	private StaffRepository staffRepository;
+
+	public Staff saveStaff(Staff staff) {
+		return staffRepository.save(staff);
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.tracen.dvdrental.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tracen.dvdrental.entity.Actor;
+import com.tracen.dvdrental.service.ActorService;
+
+@RestController
+@RequestMapping("/actor")
+public class ActorController {
+
+	@Autowired
+	private ActorService actorService;
+	
+	@PostMapping("/save")
+	public ResponseEntity<Actor> saveActor(@RequestBody Actor actor) {
+		return ResponseEntity.ok(actorService.saveActor(actor));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Actor> getActor(@PathVariable("id") Long actorId) {
+		Actor actor = actorService.getActor(actorId);
+		if (actor == null)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok(actor);
+	}
+	
+	@GetMapping("/list")
+	public ResponseEntity<List<Actor>> getAllActors() {
+		List<Actor> actors = actorService.getAllActors();
+		if (actors.isEmpty())
+			return ResponseEntity.noContent().build();
+		return ResponseEntity.ok(actors);
+	}
+	
+}

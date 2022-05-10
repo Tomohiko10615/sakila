@@ -1,0 +1,45 @@
+package com.tracen.dvdrental.controller.basic;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.tracen.dvdrental.entity.staff;
+import com.tracen.dvdrental.service.staffService;
+
+@RestController
+@RequestMapping("/staff")
+public class staffController {
+
+	@Autowired
+	private staffService staffService;
+	
+	@PostMapping("/save")
+	public ResponseEntity<staff> savestaff(@RequestBody staff staff) {
+		return ResponseEntity.ok(staffService.savestaff(staff));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<staff> getstaff(@PathVariable("id") Long staffId) {
+		staff staff = staffService.getstaff(staffId);
+		if (staff == null)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok(staff);
+	}
+	
+	@GetMapping("/list")
+	public ResponseEntity<List<staff>> getAllstaffs() {
+		List<staff> staffs = staffService.getAllstaffs();
+		if (staffs.isEmpty())
+			return ResponseEntity.noContent().build();
+		return ResponseEntity.ok(staffs);
+	}
+	
+}
