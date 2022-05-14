@@ -4,4 +4,9 @@ The DVD Rental project is being done by using [The Sakila Sample Database](https
 
 ## Schema
 
+The following schema was used with a few modifications.
+
 ![Sakila Schema](https://github.com/Tomohiko10615/sakila/raw/main/sakila_full_database_schema_diagram.png)
+
+## Stack
+
