@@ -1,6 +1,6 @@
 # DVD Rental - Backend
 
-The DVD Rental project is being done by using [The Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/) which is a complex database with 16 tables. This app is able to perform basic CRUD operations as well some more complex queries.
+The DVD Rental project is being done by using [The Sakila Sample Database](https://dev.mysql.com/doc/sakila/en/) which is a complex database with 16 tables. This app is able to perform basic CRUD operations as well as some more complex queries.
 
 ## Schema
 
