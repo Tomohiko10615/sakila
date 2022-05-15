@@ -21,9 +21,7 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 ## API endpoints
 
-### Basic CRUD
-
-#### **Save new customer**
+### **Save new customer**
 
 Type: **POST**
 ``` 
@@ -39,7 +37,7 @@ Responses
 | :-------- | :------- |
 | `200` | `Returns saved customer` |
 
-#### **Get all customers**
+### **Get all customers**
 
 Type: **GET**
 ```
