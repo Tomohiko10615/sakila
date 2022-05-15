@@ -25,12 +25,13 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Save new ustomer
 
-**POST** Endpoint to save a new customer
+Type: **POST**
 ``` 
 /customer/save
 ```
 
-**Request Body** `Required: application/json`
+**Request Body**
+`Required: application/json`
 
 **Responses**
 | Code | Description     |
@@ -39,7 +40,7 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Get all customers
 
-**GET** Endpoint to fetch all customers
+Type: **GET**
 ```
 /customer/list
 ```
@@ -48,3 +49,4 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 | Code | Description     |
 | :-------- | :------- |
 | `200` | `Returns all customers` |
+| `204` | `There is no customers` |
