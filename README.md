@@ -25,7 +25,6 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Save new ustomer
 
-#####
 ``` 
   **POST**  /customer/save
 ```
@@ -42,4 +41,4 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 | Header | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Authorization` | `Token` | **Required**. Endpoint list all customers|
+| `Authorization` | `Token` | Endpoint list all customers|
