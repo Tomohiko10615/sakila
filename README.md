@@ -23,7 +23,7 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 ### Basic CRUD
 
-#### Save new ustomer
+#### Save new customer
 
 Type: **POST**
 ``` 
