@@ -32,20 +32,38 @@ Type: **POST**
 
 `Required: application/json`
 
-Responses
+**Responses**:
 | Code | Description     |
 | :-------- | :------- |
 | `200` | `Returns saved customer` |
 
-### **Get all customers**
+### **Fetch all customers**
 
 Type: **GET**
 ```
 /customer/list
 ```
 
-**Responses**
+**Responses:**
 | Code | Description     |
 | :-------- | :------- |
 | `200` | `Returns all customers` |
 | `204` | `There is no customers` |
+
+### **Fetch one customer**
+
+Type: **GET**
+```
+/customer/{id}
+```
+
+**Parameters:**
+| Name | Description     |
+| :-------- | :------- |
+| `id` **required** *path* | `Id of the customer` |
+
+**Responses:**
+| Code | Description     |
+| :-------- | :------- |
+| `200` | `Returns the customer with the selected id` |
+| `404` | `No customer with the selected id was found` |
