@@ -35,17 +35,16 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 **Responses**
 | Code | Description     |
 | :-------- | :------- |
-| `200` | `application/json Customer object` |
-| `400` | `Bad request` |
-
+| `200` | `Returns saved customer` |
 
 #### Get all customers
 
-**GET**
+**GET** Endpoint to fetch all customers
 ```
 /customer/list
 ```
 
-| Parameters | Request Body     | Description                |
-| :-------- | :------- | :------------------------- |
-| `No parameters` | `No required` application/json | Endpoint to fetch all customers |
+**Responses**
+| Code | Description     |
+| :-------- | :------- |
+| `200` | `Returns all customers` |
