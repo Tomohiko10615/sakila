@@ -23,14 +23,14 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 ### Basic CRUD
 
-#### Save new customer
+#### **Save new customer**
 
 Type: **POST**
 ``` 
 /customer/save
 ```
 
-Request Body
+**Request Body**
 `Required: application/json`
 
 Responses
@@ -38,14 +38,14 @@ Responses
 | :-------- | :------- |
 | `200` | `Returns saved customer` |
 
-#### Get all customers
+#### **Get all customers**
 
 Type: **GET**
 ```
 /customer/list
 ```
 
-Responses
+**Responses**
 | Code | Description     |
 | :-------- | :------- |
 | `200` | `Returns all customers` |
