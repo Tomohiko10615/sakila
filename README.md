@@ -30,12 +30,12 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 /customer/save
 ```
 
-**Request Body** Required: application/json
+**Request Body** `Required: application/json`
 
 **Responses**
 | Code | Description     |
 | :-------- | :------- |
-| `200` | `application/json` Customer object |
+| `200` | `application/json Customer object` |
 | `400` | `Bad request` |
 
 
