@@ -25,13 +25,13 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Save new ustomer
 
-``` Save
+``` http
   POST  /customer/save
 ```
 
 | Parameters | Request Body     | Description                |
 | :-------- | :------- | :------------------------- |
-| `No parameters` | `Required` application/json | **Required**. Endpoint to save a new customer|
+| `No parameters` | `Required` application/json | Endpoint to save a new customer|
 
 #### Get all customers
 
