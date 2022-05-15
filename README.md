@@ -23,10 +23,22 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 ### Basic CRUD
 
-``` Save new customer
-  Post  /customer/save
+#### Save new ustomer
+
+``` Save
+  POST  /customer/save
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `/customer/save` | `Json` | **Required**. Endpoint to save a new customer|
+
+#### Get all customers
+
+```http
+  GET /portfolio/
+```
+
+| Header | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `Authorization` | `Token` | **Required**. Endpoint where get all criptos acquired for loged user|
