@@ -25,21 +25,27 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Save new ustomer
 
-**POST**
+**POST** Endpoint to save a new customer
 ``` 
 /customer/save
 ```
 
-| Parameters | Request Body     | Description                |
-| :-------- | :------- | :------------------------- |
-| `No parameters` | `Required` application/json | Endpoint to save a new customer|
+**Request Body** Required: application/json
+
+**Responses**
+| Code | Description     |
+| :-------- | :------- |
+| `200` | `application/json` Customer object |
+| `400` | `Bad request` |
+
 
 #### Get all customers
 
+**GET**
 ```
-  ##### **GET** /customer/list
+/customer/list
 ```
 
-| Header | Type     | Description                |
+| Parameters | Request Body     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Authorization` | `Token` | Endpoint list all customers|
+| `No parameters` | `No required` application/json | Endpoint to fetch all customers |
