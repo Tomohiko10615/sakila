@@ -23,10 +23,10 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 ### Basic CRUD
 
-``` Save
-  Post  /{entity}/save
+``` Save new customer
+  Post  /customer/save
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `/{entity}/save` | `Json` | **Required**. Endpoints to save an entity|
+| `/customer/save` | `Json` | **Required**. Endpoint to save a new customer|
