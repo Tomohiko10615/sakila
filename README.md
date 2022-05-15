@@ -30,10 +30,10 @@ Type: **POST**
 /customer/save
 ```
 
-**Request Body**
+Request Body
 `Required: application/json`
 
-**Responses**
+Responses
 | Code | Description     |
 | :-------- | :------- |
 | `200` | `Returns saved customer` |
@@ -45,7 +45,7 @@ Type: **GET**
 /customer/list
 ```
 
-**Responses**
+Responses
 | Code | Description     |
 | :-------- | :------- |
 | `200` | `Returns all customers` |
