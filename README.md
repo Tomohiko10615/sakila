@@ -25,8 +25,9 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Save new ustomer
 
+**POST**
 ``` 
-  **POST**  /customer/save
+/customer/save
 ```
 
 | Parameters | Request Body     | Description                |
