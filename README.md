@@ -20,3 +20,13 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 ![Eclipse](https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white)
 
 ## API endpoints
+
+### Basic CRUD
+
+``` Save
+  Post  /{entity}/save
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `/{entity}/save` | `Json` | **Required**. Endpoints to save an entity|
