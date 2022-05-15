@@ -25,7 +25,7 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Save new ustomer
 
-``` http
+``` 
   POST  /customer/save
 ```
 
@@ -35,7 +35,7 @@ This project was done using Spring Framework (Spring Boot, Spring Data JPA)
 
 #### Get all customers
 
-```http
+```
   GET /customer/list
 ```
 
